@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/chatFlowGraph">
+
+    <!-- Chat Flow (nested graph) -->
+    <navigation android:id="@+id/chatFlowGraph"
+        app:startDestination="@id/friendsFragment">
+
+        <fragment
+            android:id="@+id/friendsFragment"
+            android:name="uk.co.victoriajanedavis.navigationcrashsampleapp.FriendsFragment"
+            android:label="fragment_friends"
+            tools:layout="@layout/fragment_friends">
+
+            <action
+                android:id="@+id/action_friendsFragment_to_loginFlowGraph"
+                app:destination="@id/loginFlowGraph"
+                app:popUpTo="@id/chatFlowGraph"
+                app:popUpToInclusive="true"/>
+
+        </fragment>
+
+    </navigation>
+
+    <!-- Login/Register Flow (nested graph) -->
+    <navigation android:id="@+id/loginFlowGraph"
+        app:startDestination="@id/loginFragment">
+
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="uk.co.victoriajanedavis.navigationcrashsampleapp.LoginFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login">
+
+            <action
+                android:id="@+id/action_loginFragment_to_chatFlowGraph"
+                app:destination="@id/chatFlowGraph"
+                app:popUpTo="@id/loginFlowGraph"
+                app:popUpToInclusive="true"/>
+
+        </fragment>
+
+    </navigation>
+
+</navigation>
